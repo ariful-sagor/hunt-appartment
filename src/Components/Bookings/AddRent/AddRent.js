@@ -4,7 +4,7 @@ const AddRent = () => {
     const [info, setInfo] = useState({});
     const [file, setFile] = useState(null);
     const handleBlur = e => {
-        const newInfo = { ...info };
+        const newInfo = {...info};
         newInfo[e.target.name] = e.target.value;
         setInfo(newInfo);
     }
@@ -16,7 +16,6 @@ const AddRent = () => {
 
     const handleSubmit = (e) => {
         const formData = new FormData()
-        console.log(info);
         formData.append('file', file);
         formData.append('title', info.title);
         formData.append('location', info.location);
@@ -24,22 +23,22 @@ const AddRent = () => {
         formData.append('price', info.price);
         formData.append('bedroom', info.bedroom);
 
-        fetch('https://localhost:5000/addRentHouse', {
+        fetch('http://localhost:5000/addRentHouse', {
             method: 'POST',
             body: formData
         })
             .then(response => response.json())
             .then(data => {
-                alert('Service Added successfully!');
                 console.log(data);
-                e.target.reset();
+                alert('Service Added successfully!');
+             
             })
             .catch(error => {
                 console.error(error);
                 alert('Fill all fields properly.');
             })
         e.preventDefault();
-        
+        e.target.reset();
         }
 
     return (
@@ -68,15 +67,11 @@ const AddRent = () => {
                             </div> <br />                                                    
                                               
                         </div>
-                    </div>                            
+                    </div> 
+                     <br/>
+                    <input type="submit" className="btn btn-success ml-3 px-4" value="Submit"/>                          
                 </form>                        
-            </div>
-            <div className="row">
-                    <div className="col-md-10"></div>
-                    <div className="col-md-2">
-                        <input type="submit" className="btn btn-success ml-3 px-4" value="Submit"/>
-                    </div>    
-                </div>  
+            </div> 
         </section>
     );
 };
