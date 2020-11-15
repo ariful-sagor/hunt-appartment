@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const MyRent = () => {
+const List = () => {
+
 
     return (
         <div>
@@ -9,9 +10,11 @@ const MyRent = () => {
                 <Table borderless>
                     <thead>
                         <tr>
-                            <th>House Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th>Name</th>
+                            <th>Email ID</th>
+                            <th>Service</th>
+                            <th>Product Details</th>
+                            <th className="text-center">status</th>
                         </tr>
                     </thead>
                                         
@@ -21,4 +24,4 @@ const MyRent = () => {
     );
 };
 
-export default MyRent;
+export default List;

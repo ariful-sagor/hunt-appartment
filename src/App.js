@@ -6,7 +6,7 @@ import SignUp from './Components/Login/SignUp/SignUp';
 import Login from './Components/Login/Login/Login';
 import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
-
+import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 
 
 
@@ -25,9 +25,9 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-        {/* <Route path="/booking">
-          <Booking />
-        </Route> */}
+        <Route path="/huntPage">
+          <HuntPage />
+        </Route>
         <Route exact path="/">
           <Home />
         </Route>
