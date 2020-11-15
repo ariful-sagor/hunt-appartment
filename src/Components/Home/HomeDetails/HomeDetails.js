@@ -1,10 +1,89 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import './HomeDetails.css';
+import homeDetailImage1 from '../../../images/Rectangle 410.png';
+import homeDetailImage2 from '../../../images/Rectangle 409.png';
+import homeDetailImage3 from '../../../images/Rectangle 408.png';
+import homeDetailImage4 from '../../../images/Rectangle 407.png';
+import temporaryImage from '../../../images/Rectangle 398.png';
 
 const HomeDetails = () => {
     return (
         <div>
-            <NavBar/>
+            <NavBar />
+            <div className="row headingStyle">
+                <div className="col-md-12 pt-5">
+                    <h1 className="text-center text-white mt-5 fonts">Apartment</h1>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row justify-content-center mt-4">
+                <div className="col-md-8">
+
+                      <img src={temporaryImage} className="img-fluid" alt=""/>
+
+                      <div className="row justify-content-center mt-2">
+                          <div className="col-md-3">
+                              <img src={homeDetailImage1} className="img-fluid" alt=""/>
+                          </div>
+                          <div className="col-md-3">
+                              <img src={homeDetailImage2} className="img-fluid" alt=""/>
+                          </div>
+                          <div className="col-md-3">
+                              <img src={homeDetailImage3} className="img-fluid" alt=""/>
+                          </div>
+                          <div className="col-md-3">
+                              <img src={homeDetailImage4} className="img-fluid" alt=""/>
+                          </div>
+                      </div>
+
+                      <div className="row justify-content-between mt-4">
+                          <div className="col-md-3">
+                             <h2>Title</h2>
+                          </div>
+                          <div className="col-md-3">
+                                 <h2>Price</h2>
+                          </div>
+                      </div>
+                     <p className="mt-3">3000 sq-ft., 3 Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
+
+                      <div className="mt-4">
+                          <h4>Price Details</h4>
+                          <p className="mt-3">Rent/Month: $550 (negotiable)
+                            Service Charge : 8,000/= Tk per month, subject to change
+                            Security Deposit : 3 month’s rent
+                            Flat Release Policy : 3 months earlier notice required</p>
+                      </div>
+                      <div className="mt-4">
+                          <h4>Property Details</h4>
+                           <p className="mt-3">Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area.
+                            Flat Size : 3000 Sq Feet.
+                            Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit)
+                            Room Category : 3 Large Bed Rooms with 3 Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.
+                            Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.
+                            Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera
+                           </p>
+                      </div>
+                </div>
+                <div className="col-md-4">
+                    <form>
+                        <div className="form-group">
+                            <input type="text" className="form-control" placeholder="Full Name" />
+                        </div>
+                        <div className="form-group">
+                            <input type="number" className="form-control" placeholder="Phone No" />
+                        </div>
+                        <div className="form-group">
+                            <input type="email" className="form-control" placeholder="Email Address" />
+                        </div>
+                        <div className="form-group">
+                            <textarea className="form-control" rows="3"></textarea>
+                        </div>
+                        <input type="submit" className="btn btn-primary" value="Submit"/>
+                    </form>
+                </div>
+                </div>
+            </div>
         </div>
     );
 };

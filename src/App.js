@@ -7,7 +7,7 @@ import Login from './Components/Login/Login/Login';
 import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
-
+import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 
 
 function App() {
@@ -24,6 +24,9 @@ function App() {
         </Route>
         <Route path="/home">
           <Home />
+        </Route>
+        <Route path="/about">
+          <HomeDetails/>
         </Route>
         <Route path="/huntPage">
           <HuntPage />
