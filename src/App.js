@@ -6,6 +6,7 @@ import SignUp from './Components/Login/SignUp/SignUp';
 import Login from './Components/Login/Login/Login';
 import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
+import AddRentHouse from './Components/Bookings/AddRentHouse/AddRentHouse';
 
 
 
@@ -16,6 +17,9 @@ function App() {
 
     <Router>
       <Switch>
+      <Route path="/addRentHouse">
+          <AddRentHouse/>
+        </Route>
         <Route path="/login">
           <Login />
         </Route>
