@@ -26,7 +26,7 @@ const AddRentHouse = () => {
         formData.append('price', info.price);
         formData.append('bedroom', info.bedroom);
 
-        fetch('https://guarded-sea-90630.herokuapp.com/addSingleService', {
+        fetch('/addRentHouse', {
             method: 'POST',
             body: formData
         })
