@@ -7,7 +7,7 @@ import Login from './Components/Login/Login/Login';
 import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
-// import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
+import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 
 export const UserContext= createContext();
 
@@ -29,9 +29,9 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-        {/* <Route path="/about">
+       <Route path="/about">
           <HomeDetails/>
-        </Route> */}
+        </Route>
         <Route path="/huntPage">
           <HuntPage />
         </Route>s
