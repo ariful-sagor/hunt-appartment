@@ -12,6 +12,7 @@ import { UserContext } from '../../../App';
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [rentHouse, setRentHouse] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser]= useContext(UserContext);
 
     const onSubmit = (data, event) => {
         const newBooking = {...data};
@@ -27,6 +28,7 @@ const HomeDetails = () => {
           event.target.reset();
         }
       })
+      console.log(rentHouse)
 
 }
     return (
@@ -40,8 +42,8 @@ const HomeDetails = () => {
             <div className="container">
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
-
-                      <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>  {/* this image is temporary.  */}
+                    <img src={temporaryImage} className="img-fluid" alt=""/>
+                      {/* <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>   */}
 
                       <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
@@ -90,7 +92,7 @@ const HomeDetails = () => {
                     <div className="pt-4">
                     <form onSubmit={handleSubmit(onSubmit)} style={{backgroundColor: '#F4F4F4'}}>
                         <div className="form-group">
-                            <input type="text" name="name" className="form-control" placeholder="Full Name" ref={register({ required: true })} />
+                            <input type="text" name="name" className="form-control" placeholder="Full Name" defaultValue={loggedInUser.name} ref={register({ required: true })} />
                             {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div className="form-group">
@@ -98,7 +100,7 @@ const HomeDetails = () => {
                             {errors.name && <span className="error">Phone Number is required</span>}
                         </div>
                         <div className="form-group">
-                            <input type="email" name="email" className="form-control" placeholder="Email Address" ref={register({ required: true })}/>
+                            <input type="email" name="email" className="form-control" placeholder="Email Address" defaultValue={loggedInUser.email}  ref={register({ required: true })}/>
                             {errors.name && <span className="error">Email is required</span>}
                         </div>
                         <div className="form-group">

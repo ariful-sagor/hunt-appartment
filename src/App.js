@@ -8,6 +8,7 @@ import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
+import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 
 export const UserContext= createContext();
 
@@ -30,12 +31,15 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-       <Route path="/about">
+       {/* <Route path="/about">
           <HomeDetails/>
-        </Route>
+        </Route> */}
         <Route path="/huntPage">
           <HuntPage />
-        </Route>s
+        </Route>
+        <PrivateRoute path="/about">
+          <HomeDetails/>
+          </PrivateRoute>
         <Route exact path="/">
           <Home />
         </Route>
