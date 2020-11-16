@@ -13,10 +13,11 @@ export const UserContext= createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser]= useState({});
+  const [rentHouse, setRentHouse] = useState({});
 
   
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, rentHouse, setRentHouse]}>
 
     <Router>
       <Switch>
