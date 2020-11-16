@@ -9,8 +9,8 @@ const HouseRent = () => {
         .then(data => setHouse(data))
         }, [])
     return (
-        <section className="services-container mt-5">
-        <div className="text-center">
+        <section className="houses-container pt-5">
+        <div className="text-center mb-5">
             <h6 style={{ color: '#275A53' }}>HOUSE RENT</h6>
             <h1 style={{ color: '#275A53', fontWeight:"bold" }}>Discover the latest Rent <br/> available today</h1>
         </div>
