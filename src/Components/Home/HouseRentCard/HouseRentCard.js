@@ -1,8 +1,16 @@
 import { faBath, faBed, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { UserContext } from '../../../App';
 import './HouseRentCard.css'
 const HouseRentCard = ({ house }) => {
+    const [rentHouse, setRentHouse] = useContext(UserContext);
+    const history = useHistory();
+    const handleAddService = (house) => {
+        setRentHouse(house);
+        history.push('/about');
+    }
     return (
         <div className="col-md-4 house-container">
             <div className=" house-card card">
@@ -20,7 +28,7 @@ const HouseRentCard = ({ house }) => {
                 </div>
                 <div className="d-flex pl-3 mt-3">
                     <h1 className="mr-5">${house.price}</h1>
-                    <button className="btn details-btn">View Details</button>
+                    <button onClick={() => handleAddService(house)} className="btn details-btn">View Details</button>
                 </div>
 
             </div>

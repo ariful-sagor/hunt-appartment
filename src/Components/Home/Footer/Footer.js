@@ -29,7 +29,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="copyRight text-center">
-                    <p>Copyright {(new Date()).getFullYear()} All Rights Reserved</p>
+                    <p> &copy; Copyright {(new Date()).getFullYear()} All Rights Reserved (Mohiuddin, Ariful & Riyad)</p>
                 </div>
         </footer>
     );
