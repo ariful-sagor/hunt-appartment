@@ -14,7 +14,6 @@ const HeaderMain = () => {
                             <button className="search-btn btn ml-3">Find Now</button>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>

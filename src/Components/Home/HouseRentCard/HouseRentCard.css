@@ -1,0 +1,15 @@
+.house-card{
+    margin-bottom: 25px;
+}
+.house-card{
+    height: 400px;
+    background-color: lightgreen;
+}
+.details-btn{
+    width: 140px;
+    height: 50px;
+    background-color: #275A53;
+    color: white;
+    border: 0;
+}
+
