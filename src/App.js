@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,10 +9,14 @@ import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 
+export const UserContext= createContext();
 
 function App() {
+  const [loggedInUser, setLoggedInUser]= useState({});
+
   
   return (
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
 
     <Router>
       <Switch>
@@ -25,12 +29,12 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/about">
+       <Route path="/about">
           <HomeDetails/>
         </Route>
         <Route path="/huntPage">
           <HuntPage />
-        </Route>
+        </Route>s
         <Route exact path="/">
           <Home />
         </Route>
@@ -39,6 +43,8 @@ function App() {
         </Route>
       </Switch>
     </Router>
+    </UserContext.Provider>
+
   );
 }
 
