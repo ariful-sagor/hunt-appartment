@@ -2,12 +2,11 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../../../logos/Logo.png';
-import './NavBar.css';
 
 const NavBar = () => {
 
     return (
-        <nav className="navbar navbar-expand-md navbar-light" style={{backgroundColor: '#E5E5E5'}}>
+        <nav className="navbar navbar-expand-md navbar-light">
             <div className="container-xl">
                 <Link className="navbar-brand" to="/">
                     <img src={logo} alt="" width="100px" />
@@ -36,7 +35,7 @@ const NavBar = () => {
                             <a className="nav-link text-dark" href="#contact">Concerns</a>
                         </li>  
                         <li className="nav-item mx-2">
-                            <Button className=" nav-btn" width="100px" style={{backgroundColor: '#275A53', border: '1px solid #275A53'}}>Login</Button>
+                            <Button style={{backgroundColor: '#275A53', border: '1px solid #275A53'}}>Login</Button>
                             {/* <a className="nav-link text-dark" href="#contact">Concerns</a> */}
                         </li>  
                     </ul>

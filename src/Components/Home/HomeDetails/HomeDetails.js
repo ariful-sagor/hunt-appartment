@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import './HomeDetails.css';
 import { useForm } from 'react-hook-form';
@@ -7,11 +7,9 @@ import homeDetailImage2 from '../../../images/Rectangle 409.png';
 import homeDetailImage3 from '../../../images/Rectangle 408.png';
 import homeDetailImage4 from '../../../images/Rectangle 407.png';
 import temporaryImage from '../../../images/Rectangle 398.png';
-import { UserContext } from '../../../App';
 
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [rentHouse, setRentHouse] = useContext(UserContext);
 
     const onSubmit = (data, event) => {
         const newBooking = {...data};
@@ -30,9 +28,9 @@ const HomeDetails = () => {
 
 }
     return (
-        <div style={{backgroundColor: '#E5E5E5'}} className="pb-5">
+        <div>
             <NavBar />
-            <div className="row headingStyle ">
+            <div className="row headingStyle">
                 <div className="col-md-12 pt-5">
                     <h1 className="text-center text-white mt-5 fonts">Apartment</h1>
                 </div>
@@ -41,7 +39,7 @@ const HomeDetails = () => {
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
 
-                      <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>  {/* this image is temporary.  */}
+                      <img src={temporaryImage} className="img-fluid" alt=""/>  {/* this image is temporary.  */}
 
                       <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
@@ -59,14 +57,14 @@ const HomeDetails = () => {
                       </div>
 
                       <div className="row justify-content-between mt-4">
-                          <div className="pl-3">
-                             <h2>{rentHouse.title}</h2> {/* title and price will be come from database */}
+                          <div className="col-md-3">
+                             <h2>Title</h2> {/* title and price will be come from database */}
                           </div>
-                          <div className="pr-3">
-                                 <h2 style={{color: '#275A53', fontWeightAbsolute:'bold'}}>${rentHouse.price}</h2>
+                          <div className="col-md-3">
+                                 <h2>Price</h2>
                           </div>
                       </div>
-                     <p className="mt-3">3000 sq-ft., {rentHouse.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
+                     <p className="mt-3">3000 sq-ft., 3 Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
 
                       <div className="mt-4">
                           <h4>Price Details</h4>
@@ -80,21 +78,21 @@ const HomeDetails = () => {
                            <p className="mt-3">Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area.
                             Flat Size : 3000 Sq Feet.
                             Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit)
-                            Room Category : {rentHouse.bedroom} Large Bed Rooms with {rentHouse.bedroom} Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.
+                            Room Category : 3 Large Bed Rooms with 3 Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.
                             Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.
                             Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera
                            </p>
                       </div>
                 </div>
-                <div className="col-md-4 p-3 formStyle ">
+                <div className="col-md-4 p-3 formStyle">
                     <div className="pt-4">
-                    <form onSubmit={handleSubmit(onSubmit)} style={{backgroundColor: '#F4F4F4'}}>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
                             <input type="text" name="name" className="form-control" placeholder="Full Name" ref={register({ required: true })} />
                             {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div className="form-group">
-                            <input type="text" name="phone" className="form-control" placeholder="Phone No" ref={register({ required: true })}/>
+                            <input type="number" name="phone" className="form-control" placeholder="Phone No" ref={register({ required: true })}/>
                             {errors.name && <span className="error">Phone Number is required</span>}
                         </div>
                         <div className="form-group">

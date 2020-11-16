@@ -1,17 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Table } from 'react-bootstrap';
-import ListDetails from './ListDetails';
 
 const List = () => {
- const [listInfo, setListInfo] = useState([]);
 
- useEffect(() =>{
-     fetch('http://localhost:5000/allUsersBooking')
-     .then(res => res.json())
-     .then(data => {
-         setListInfo(data);
-     })
- }, [])
 
     return (
         <div>
@@ -26,9 +17,7 @@ const List = () => {
                             <th className="text-center">status</th>
                         </tr>
                     </thead>
-                        {
-                            listInfo.map(data => <ListDetails data={data} id={data._id}/>)
-                        }           
+                                        
                 </Table>
             </div>
         </div>
