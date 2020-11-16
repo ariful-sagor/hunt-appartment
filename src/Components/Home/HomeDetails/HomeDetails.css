@@ -5,3 +5,11 @@
     background-size: cover;
     font-weight: 700;
 }
+.formStyle{
+    height: 400px;
+    background: #F4F4F4;
+}
+.btnStyle{
+    background-color: #275A53;
+    color: white;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
 import './HomeDetails.css';
+import { useForm } from 'react-hook-form';
 import homeDetailImage1 from '../../../images/Rectangle 410.png';
 import homeDetailImage2 from '../../../images/Rectangle 409.png';
 import homeDetailImage3 from '../../../images/Rectangle 408.png';
@@ -8,6 +9,24 @@ import homeDetailImage4 from '../../../images/Rectangle 407.png';
 import temporaryImage from '../../../images/Rectangle 398.png';
 
 const HomeDetails = () => {
+    const { register, handleSubmit, watch, errors } = useForm();
+
+    const onSubmit = (data, event) => {
+        const newBooking = {...data};
+        fetch('http://localhost:5000/addBooking',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newBooking)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(data){
+          alert('Your booking is successfully complete');
+          event.target.reset();
+        }
+      })
+
+}
     return (
         <div>
             <NavBar />
@@ -20,9 +39,9 @@ const HomeDetails = () => {
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
 
-                      <img src={temporaryImage} className="img-fluid" alt=""/>
+                      <img src={temporaryImage} className="img-fluid" alt=""/>  {/* this image is temporary.  */}
 
-                      <div className="row justify-content-center mt-2">
+                      <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
                               <img src={homeDetailImage1} className="img-fluid" alt=""/>
                           </div>
@@ -39,7 +58,7 @@ const HomeDetails = () => {
 
                       <div className="row justify-content-between mt-4">
                           <div className="col-md-3">
-                             <h2>Title</h2>
+                             <h2>Title</h2> {/* title and price will be come from database */}
                           </div>
                           <div className="col-md-3">
                                  <h2>Price</h2>
@@ -65,22 +84,28 @@ const HomeDetails = () => {
                            </p>
                       </div>
                 </div>
-                <div className="col-md-4">
-                    <form>
+                <div className="col-md-4 p-3 formStyle">
+                    <div className="pt-4">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-group">
-                            <input type="text" className="form-control" placeholder="Full Name" />
+                            <input type="text" name="name" className="form-control" placeholder="Full Name" ref={register({ required: true })} />
+                            {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div className="form-group">
-                            <input type="number" className="form-control" placeholder="Phone No" />
+                            <input type="number" name="phone" className="form-control" placeholder="Phone No" ref={register({ required: true })}/>
+                            {errors.name && <span className="error">Phone Number is required</span>}
                         </div>
                         <div className="form-group">
-                            <input type="email" className="form-control" placeholder="Email Address" />
+                            <input type="email" name="email" className="form-control" placeholder="Email Address" ref={register({ required: true })}/>
+                            {errors.name && <span className="error">Email is required</span>}
                         </div>
                         <div className="form-group">
-                            <textarea className="form-control" rows="3"></textarea>
+                            <textarea name="message" className="form-control" rows="4" placeholder="Message" ref={register({ required: true })}></textarea>
+                            {errors.name && <span className="error">Message is required</span>}
                         </div>
-                        <input type="submit" className="btn btn-primary" value="Submit"/>
+                        <input type="submit" className="btn btn-block btnStyle" value="Request Booking"/>
                     </form>
+                    </div>
                 </div>
                 </div>
             </div>
