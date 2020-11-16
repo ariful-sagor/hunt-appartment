@@ -1,9 +1,7 @@
 .house-card{
-    margin-bottom: 25px;
-}
-.house-card{
-    height: 400px;
+    /* height: 400px; */
     background-color: white;
+    margin-bottom: 25px;
 }
 .details-btn{
     width: 140px;
