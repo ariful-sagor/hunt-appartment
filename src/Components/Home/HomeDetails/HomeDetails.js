@@ -14,19 +14,23 @@ const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [rentHouse, setRentHouse] = useContext(UserContext);
   const [loggedInUser, setLoggedInUser]= useContext(UserContext);
-  const [allApartments, setAllApartments] = useState([]);
-  const {_id} = useParams();
-  const history = useHistory();
+  
 
-  useEffect(() => {
-    fetch('https://pure-inlet-63037.herokuapp.com/apartments')
+ 
+    const [allApartments, setAllApartments] = useState([]);
+    const {_id} = useParams();
+    const history = useHistory();
+
+    useEffect(() => {
+     fetch('https://pure-inlet-63037.herokuapp.com/apartments')
     .then(res => res.json())
     .then(data => {
           setAllApartments(data);
     })
 },[])
 
-const house = allApartments.find(apartment => apartment._id === _id) || {};
+    const house = allApartments.find(apartment => apartment._id === _id) || { };
+ 
 
     const onSubmit = (data, event) => {
         const apartmentPrice = house.price;
@@ -61,7 +65,8 @@ const house = allApartments.find(apartment => apartment._id === _id) || {};
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
                 <img src={temporaryImage} className="img-fluid" alt=""/>
-                      {/* <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>   */}
+                     
+
                       <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
                               <img src={homeDetailImage1} className="img-fluid" alt=""/>
