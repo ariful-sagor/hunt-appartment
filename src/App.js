@@ -9,6 +9,7 @@ import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
+import List from './Components/Bookings/List/List';
 
 export const UserContext= createContext();
 

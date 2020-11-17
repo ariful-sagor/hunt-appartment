@@ -8,7 +8,7 @@ import homeDetailImage3 from '../../../images/Rectangle 408.png';
 import homeDetailImage4 from '../../../images/Rectangle 407.png';
 import temporaryImage from '../../../images/Rectangle 398.png';
 import { UserContext } from '../../../App';
-import { useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -16,9 +16,22 @@ const HomeDetails = () => {
   const [loggedInUser, setLoggedInUser]= useContext(UserContext);
   const [allApartments, setAllApartments] = useState([]);
   const {_id} = useParams();
+  const history = useHistory();
+
+  useEffect(() => {
+    fetch('http://localhost:5000/apartments')
+    .then(res => res.json())
+    .then(data => {
+          setAllApartments(data);
+    })
+},[])
+
+const house = allApartments.find(apartment => apartment._id === _id) || {};
 
     const onSubmit = (data, event) => {
-        const newBooking = {...data};
+        const apartmentPrice = house.price;
+        const apartmentTitle = house.title;
+        const newBooking = {...data, apartmentPrice, apartmentTitle};
         fetch('http://localhost:5000/addBooking',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -29,22 +42,13 @@ const HomeDetails = () => {
         if(data){
           alert('Your booking is successfully complete');
           event.target.reset();
+          history.push('/huntPage')
         }
       })
       console.log(rentHouse)
 
 }
 
-      useEffect(() => {
-          fetch('http://localhost:5000/apartments')
-          .then(res => res.json())
-          .then(data => {
-                setAllApartments(data);
-          })
-      },[])
-
-      const house = allApartments.find(apartment => apartment._id === _id) || {};
-      console.log(house);
     return (
         <div style={{backgroundColor: '#E5E5E5'}} className="pb-5">
             <NavBar />
@@ -121,6 +125,7 @@ const HomeDetails = () => {
                             {errors.name && <span className="error">Message is required</span>}
                         </div>
                         <input type="submit" className="btn btn-block btnStyle" value="Request Booking"/>
+                        
                     </form>
                     </div>
                 </div>

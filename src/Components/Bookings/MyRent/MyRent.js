@@ -7,21 +7,20 @@ const MyRent = () => {
     const[loggedInUser, setLoggedInUser] = useContext(UserContext);
     const[myRentInfo, setMyRentInfo] = useState([]);
 
-    useEffect(() =>{
-        fetch('http://localhost:5000/apartments')
-        .then(res => res.json())
-        .then(data =>{
-            setMyRentInfo(data);
+    useEffect(() => {
+        fetch('http://localhost:5000/specificUserBooking',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({email: loggedInUser.email})
         })
+        .then(res => res.json())
+        .then(data => {
+            setMyRentInfo(data);
+            console.log(data);
+        });
     },[])
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/specificUserBooking?email='+loggedInUser.email)
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setMyRentInfo(data);
-    //     })
-    // },[])
 
     return (
         <div>
