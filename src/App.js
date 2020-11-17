@@ -10,44 +10,41 @@ import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 
-export const UserContext= createContext();
+export const UserContext = createContext();
 
 function App() {
-  const [loggedInUser, setLoggedInUser]= useState({});
+  const [loggedInUser, setLoggedInUser] = useState({});
   const [rentHouse, setRentHouse] = useState({});
 
-  
+
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser, rentHouse, setRentHouse]}>
 
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <SignUp />
-        </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
-    <Route path="/about/:_id">
-          <HomeDetails/>
-        </Route> */}
-        <Route path="/huntPage">
-          <HuntPage />
-        </Route>
-        <PrivateRoute path="/about">
-          <HomeDetails/>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/huntPage">
+            <HuntPage />
+          </Route>
+          <PrivateRoute path="/about/:_id">
+            <HomeDetails />
           </PrivateRoute>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="*">
-          <NotFound />
-        </Route>
-      </Switch>
-    </Router>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </Router>
     </UserContext.Provider>
 
   );
