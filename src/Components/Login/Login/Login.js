@@ -19,7 +19,7 @@ const Login = () => {
     const location= useLocation();
     const history = useHistory();
 
-    let {from}= location.state || { from: {pathname:"/hotel"}};
+    let {from}= location.state || { from: {pathname:"/"}};
 
     let isFormValid = true;
 
