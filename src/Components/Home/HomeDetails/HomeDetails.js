@@ -44,6 +44,7 @@ const HomeDetails = () => {
       },[])
 
       const house = allApartments.find(apartment => apartment._id === _id) || {};
+      console.log(house);
     return (
         <div style={{backgroundColor: '#E5E5E5'}} className="pb-5">
             <NavBar />
@@ -74,13 +75,13 @@ const HomeDetails = () => {
 
                       <div className="row justify-content-between mt-4">
                           <div className="pl-3">
-                             {/* <h2>{rentHouse.title}</h2> title and price will be come from database */}
+                             <h2>{house.title}</h2> 
                           </div>
                           <div className="pr-3">
-                                 {/* <h2 style={{color: '#275A53', fontWeightAbsolute:'bold'}}>${rentHouse.price}</h2> */}
+                                 <h2 style={{color: '#275A53', fontWeightAbsolute:'bold'}}>${house.price}</h2>
                           </div>
                       </div>
-                     {/* <p className="mt-3">3000 sq-ft., {rentHouse.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p> */}
+                     <p className="mt-3">3000 sq-ft., {house.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
 
                       <div className="mt-4">
                           <h4>Price Details</h4>
@@ -94,7 +95,7 @@ const HomeDetails = () => {
                            <p className="mt-3">Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area.
                             Flat Size : 3000 Sq Feet.
                             Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit)
-                            {/* Room Category : {rentHouse.bedroom} Large Bed Rooms with {rentHouse.bedroom} Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet. */}
+                            Room Category : {house.bedroom} Large Bed Rooms with {house.bedroom} Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.
                             Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.
                             Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera
                            </p>

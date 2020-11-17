@@ -31,15 +31,15 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-    <Route path="/about/:_id">
+    <PrivateRoute path="/about/:_id">
           <HomeDetails/>
-        </Route> */}
+        </PrivateRoute>
         <Route path="/huntPage">
           <HuntPage />
         </Route>
-        <PrivateRoute path="/about">
+        {/* <PrivateRoute path="/about">
           <HomeDetails/>
-          </PrivateRoute>
+          </PrivateRoute> */}
         <Route exact path="/">
           <Home />
         </Route>
