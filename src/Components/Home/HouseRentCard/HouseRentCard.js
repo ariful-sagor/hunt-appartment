@@ -7,8 +7,9 @@ import './HouseRentCard.css'
 const HouseRentCard = ({ house }) => {
     const [rentHouse, setRentHouse] = useContext(UserContext);
     const history = useHistory();
+    setRentHouse(house);
     const handleAddService = (house) => {
-        setRentHouse(house);
+        
         history.push('/about');
     }
     return (
@@ -28,7 +29,7 @@ const HouseRentCard = ({ house }) => {
                 </div>
                 <div className="d-flex pl-3 mt-3">
                     <h1 className="mr-5">${house.price}</h1>
-                    <Link to={`/about/${house._id}`}><button className="btn details-btn">View Details</button></Link>
+                    <Link to={`/about/${house.title}/${house.price}/${house.image}/${house.bedroom}`}><button className="btn details-btn">View Details</button></Link>
                     
                 </div>
 

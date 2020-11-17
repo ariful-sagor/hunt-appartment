@@ -30,7 +30,7 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-       <Route path="/about/:_id">
+       <Route path="/about/:title/:price/:image/:bedroom">
           <HomeDetails/>
         </Route>
         <Route path="/huntPage">
