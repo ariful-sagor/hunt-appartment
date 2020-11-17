@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import './HomeDetails.css';
 import { useForm } from 'react-hook-form';
@@ -12,6 +12,7 @@ import { UserContext } from '../../../App';
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [rentHouse, setRentHouse] = useContext(UserContext);
+    const [allApartments, setAllApartments] = useState([]);
 
     const onSubmit = (data, event) => {
         const newBooking = {...data};
@@ -29,6 +30,16 @@ const HomeDetails = () => {
       })
 
 }
+
+      useEffect(() => {
+          fetch('http://localhost:5000/apartments')
+          .then(res => res.json())
+          .then(data => {
+                setAllApartments(data);
+          })
+      },[])
+
+      const house = allApartments.find(apartment => apartment._id === _id) || {};
     return (
         <div style={{backgroundColor: '#E5E5E5'}} className="pb-5">
             <NavBar />
