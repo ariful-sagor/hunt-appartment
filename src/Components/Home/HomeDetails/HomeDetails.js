@@ -8,28 +8,35 @@ import homeDetailImage3 from '../../../images/Rectangle 408.png';
 import homeDetailImage4 from '../../../images/Rectangle 407.png';
 import temporaryImage from '../../../images/Rectangle 398.png';
 import { UserContext } from '../../../App';
-import { useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [rentHouse, setRentHouse] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser]= useContext(UserContext);
+  
+
+ 
     const [allApartments, setAllApartments] = useState([]);
     const {_id} = useParams();
+    const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:5000/apartments')
-        .then(res => res.json())
-        .then(data => {
-            setAllApartments(data);
-        })
-    },[])
+     fetch('https://pure-inlet-63037.herokuapp.com/apartments')
+    .then(res => res.json())
+    .then(data => {
+          setAllApartments(data);
+    })
+},[])
 
     const house = allApartments.find(apartment => apartment._id === _id) || { };
-    console.log(house);
+ 
 
     const onSubmit = (data, event) => {
-        const newBooking = {...data};
-        fetch('http://localhost:5000/addBooking',{
+        const apartmentPrice = house.price;
+        const apartmentTitle = house.title;
+        const newBooking = {...data, apartmentPrice, apartmentTitle};
+        fetch('https://pure-inlet-63037.herokuapp.com/addBooking',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newBooking)
@@ -39,8 +46,10 @@ const HomeDetails = () => {
         if(data){
           alert('Your booking is successfully complete');
           event.target.reset();
+          history.push('/huntPage')
         }
       })
+      console.log(rentHouse)
 
 }
 
@@ -55,9 +64,8 @@ const HomeDetails = () => {
             <div className="container">
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
-
-                     <img src={`data:image/png;base64,${house.image.img}`} className="img-fluid" alt="base64 test"/>
-                      {/* <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>  this image is temporary.  */}
+                <img src={temporaryImage} className="img-fluid" alt=""/>
+                     
 
                       <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
@@ -106,7 +114,7 @@ const HomeDetails = () => {
                     <div className="pt-4">
                     <form onSubmit={handleSubmit(onSubmit)} style={{backgroundColor: '#F4F4F4'}}>
                         <div className="form-group">
-                            <input type="text" name="name" className="form-control" placeholder="Full Name" ref={register({ required: true })} />
+                            <input type="text" name="name" className="form-control" placeholder="Full Name" defaultValue={loggedInUser.name} ref={register({ required: true })} />
                             {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div className="form-group">
@@ -114,7 +122,7 @@ const HomeDetails = () => {
                             {errors.name && <span className="error">Phone Number is required</span>}
                         </div>
                         <div className="form-group">
-                            <input type="email" name="email" className="form-control" placeholder="Email Address" ref={register({ required: true })}/>
+                            <input type="email" name="email" className="form-control" placeholder="Email Address" defaultValue={loggedInUser.email}  ref={register({ required: true })}/>
                             {errors.name && <span className="error">Email is required</span>}
                         </div>
                         <div className="form-group">
@@ -122,6 +130,7 @@ const HomeDetails = () => {
                             {errors.name && <span className="error">Message is required</span>}
                         </div>
                         <input type="submit" className="btn btn-block btnStyle" value="Request Booking"/>
+                        
                     </form>
                     </div>
                 </div>

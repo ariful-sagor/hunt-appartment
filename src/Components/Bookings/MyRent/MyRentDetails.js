@@ -5,8 +5,8 @@ const MyRentDetails = ({data}) => {
     return (
         <tbody>
             <tr>
-                <td><b>{data.title}</b></td>
-                <td><b>${data.price}</b></td>
+                <td><b>{data.apartmentTitle}</b></td>
+                <td><b>${data.apartmentPrice}</b></td>
                 <button className="btn btnStyle">View Details</button>
             </tr>
         </tbody>

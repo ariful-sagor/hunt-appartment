@@ -19,16 +19,13 @@ const Login = () => {
     const location= useLocation();
     const history = useHistory();
 
-    let {from}= location.state || { from: {pathname:"/hotel"}};
+    let {from}= location.state || { from: {pathname:"/"}};
 
     let isFormValid = true;
 
     const handleBlur=(event) => {
         if (event.target.name === 'email'){
             isFormValid = /\S+@\S+\.\S+/.test(event.target.value);          
-        }
-        if(event.target.name === 'password'){
-            isFormValid= event.target.value.length>5;
         }
         if(isFormValid){
             const newUserInfo = {...user};
@@ -64,6 +61,8 @@ const Login = () => {
               });
         }
         e.preventDefault();
+        history.replace(from);
+
     }
 
     const googleProvider = new firebase.auth.GoogleAuthProvider();

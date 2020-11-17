@@ -21,22 +21,22 @@ const NavBar = () => {
                             <Link className="nav-link text-dark" to="/">Home</Link>
                         </li>
                         <li className="nav-item mx-2">
-                            <Link className="nav-link text-dark" to="/about">About</Link>
+                            <Link className="nav-link text-dark" to="/">About</Link>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link text-dark" href="#works">Service</a>
+                            <a className="nav-link text-dark" href="/">Service</a>
                         </li>
                         <li className="nav-item mx-2">
-                            <a className="nav-link text-dark" href="#contact">Event</a>
+                            <a className="nav-link text-dark" href="/">Event</a>
                         </li>   
                         <li className="nav-item mx-2">
-                            <a className="nav-link text-dark" href="#contact">Contact</a>
+                            <a className="nav-link text-dark" href="/">Contact</a>
                         </li>                        
                         <li className="nav-item mx-2">
-                            <a className="nav-link text-dark" href="#contact">Concerns</a>
+                            <a className="nav-link text-dark" href="/">Concerns</a>
                         </li>  
                         <li className="nav-item mx-2">
-                            <Button className=" nav-btn" width="100px" style={{backgroundColor: '#275A53', border: '1px solid #275A53'}}>Login</Button>
+                            <Button className=" nav-btn" width="100px" style={{backgroundColor: '#275A53', border: '1px solid #275A53'}} href='/login'>Login</Button>
                             {/* <a className="nav-link text-dark" href="#contact">Concerns</a> */}
                         </li>  
                     </ul>
