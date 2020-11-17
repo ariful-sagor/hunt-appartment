@@ -9,6 +9,7 @@ import NotFound from './Components/NotFound/NotFound';
 import HuntPage from './Components/Bookings/HuntPage/HuntPage';
 import HomeDetails from './Components/Home/HomeDetails/HomeDetails';
 import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
+import List from './Components/Bookings/List/List';
 
 export const UserContext= createContext();
 
@@ -31,15 +32,15 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-    <Route path="/about/:_id">
+    <PrivateRoute path="/about/:_id">
           <HomeDetails/>
-        </Route> */}
+        </PrivateRoute>
         <Route path="/huntPage">
           <HuntPage />
         </Route>
-        <PrivateRoute path="/about">
+        {/* <PrivateRoute path="/about">
           <HomeDetails/>
-          </PrivateRoute>
+          </PrivateRoute> */}
         <Route exact path="/">
           <Home />
         </Route>
