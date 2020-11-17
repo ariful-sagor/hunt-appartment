@@ -19,7 +19,7 @@ const HomeDetails = () => {
   const history = useHistory();
 
   useEffect(() => {
-    fetch('http://localhost:5000/apartments')
+    fetch('https://pure-inlet-63037.herokuapp.com/apartments')
     .then(res => res.json())
     .then(data => {
           setAllApartments(data);
@@ -32,7 +32,7 @@ const house = allApartments.find(apartment => apartment._id === _id) || {};
         const apartmentPrice = house.price;
         const apartmentTitle = house.title;
         const newBooking = {...data, apartmentPrice, apartmentTitle};
-        fetch('http://localhost:5000/addBooking',{
+        fetch('https://pure-inlet-63037.herokuapp.com/addBooking',{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newBooking)

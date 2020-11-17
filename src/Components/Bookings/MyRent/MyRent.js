@@ -8,7 +8,7 @@ const MyRent = () => {
     const[myRentInfo, setMyRentInfo] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/specificUserBooking',{
+        fetch('https://pure-inlet-63037.herokuapp.com/specificUserBooking',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

@@ -6,7 +6,7 @@ const List = () => {
  const [listInfo, setListInfo] = useState([]);
 
  useEffect(() =>{
-     fetch('http://localhost:5000/allUsersBooking')
+     fetch('https://pure-inlet-63037.herokuapp.com/allUsersBooking')
      .then(res => res.json())
      .then(data => {
          setListInfo(data);

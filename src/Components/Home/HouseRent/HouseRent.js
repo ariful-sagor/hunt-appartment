@@ -4,7 +4,7 @@ import './HouseRent.css';
 const HouseRent = () => {
     const [ house, setHouse ] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/apartments')
+        fetch('https://pure-inlet-63037.herokuapp.com/apartments')
         .then(res => res.json())
         .then(data => setHouse(data))
         }, [])

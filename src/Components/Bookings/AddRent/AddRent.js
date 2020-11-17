@@ -23,7 +23,7 @@ const AddRent = () => {
         formData.append('price', info.price);
         formData.append('bedroom', info.bedroom);
 
-        fetch('http://localhost:5000/addRentHouse', {
+        fetch('https://pure-inlet-63037.herokuapp.com/addRentHouse', {
             method: 'POST',
             body: formData
         })
