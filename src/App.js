@@ -31,7 +31,7 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-       {/* <Route path="/about">
+    <Route path="/about/:_id">
           <HomeDetails/>
         </Route> */}
         <Route path="/huntPage">

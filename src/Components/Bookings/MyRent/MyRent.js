@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import { UserContext } from '../../../App';
 import MyRentDetails from './MyRentDetails';
 
 const MyRent = () => {
+    const[loggedInUser, setLoggedInUser] = useContext(UserContext);
     const[myRentInfo, setMyRentInfo] = useState([]);
 
     useEffect(() =>{
@@ -12,6 +14,14 @@ const MyRent = () => {
             setMyRentInfo(data);
         })
     },[])
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/specificUserBooking?email='+loggedInUser.email)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setMyRentInfo(data);
+    //     })
+    // },[])
 
     return (
         <div>

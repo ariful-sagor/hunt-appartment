@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import NavBar from '../NavBar/NavBar';
 import './HomeDetails.css';
 import { useForm } from 'react-hook-form';
@@ -8,11 +8,14 @@ import homeDetailImage3 from '../../../images/Rectangle 408.png';
 import homeDetailImage4 from '../../../images/Rectangle 407.png';
 import temporaryImage from '../../../images/Rectangle 398.png';
 import { UserContext } from '../../../App';
+import { useParams } from 'react-router-dom';
 
 const HomeDetails = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [rentHouse, setRentHouse] = useContext(UserContext);
-    const [loggedInUser, setLoggedInUser]= useContext(UserContext);
+  const [loggedInUser, setLoggedInUser]= useContext(UserContext);
+  const [allApartments, setAllApartments] = useState([]);
+  const {_id} = useParams();
 
     const onSubmit = (data, event) => {
         const newBooking = {...data};
@@ -31,6 +34,16 @@ const HomeDetails = () => {
       console.log(rentHouse)
 
 }
+
+      useEffect(() => {
+          fetch('http://localhost:5000/apartments')
+          .then(res => res.json())
+          .then(data => {
+                setAllApartments(data);
+          })
+      },[])
+
+      const house = allApartments.find(apartment => apartment._id === _id) || {};
     return (
         <div style={{backgroundColor: '#E5E5E5'}} className="pb-5">
             <NavBar />
@@ -42,9 +55,8 @@ const HomeDetails = () => {
             <div className="container">
                 <div className="row justify-content-center mt-4">
                 <div className="col-md-8">
-                    <img src={temporaryImage} className="img-fluid" alt=""/>
+                <img src={temporaryImage} className="img-fluid" alt=""/>
                       {/* <img src={`data:image/png;base64,${rentHouse.image.img}`} className="img-fluid" alt=""/>   */}
-
                       <div className="row justify-content-center mt-4">
                           <div className="col-md-3">
                               <img src={homeDetailImage1} className="img-fluid" alt=""/>
@@ -62,13 +74,13 @@ const HomeDetails = () => {
 
                       <div className="row justify-content-between mt-4">
                           <div className="pl-3">
-                             <h2>{rentHouse.title}</h2> {/* title and price will be come from database */}
+                             {/* <h2>{rentHouse.title}</h2> title and price will be come from database */}
                           </div>
                           <div className="pr-3">
-                                 <h2 style={{color: '#275A53', fontWeightAbsolute:'bold'}}>${rentHouse.price}</h2>
+                                 {/* <h2 style={{color: '#275A53', fontWeightAbsolute:'bold'}}>${rentHouse.price}</h2> */}
                           </div>
                       </div>
-                     <p className="mt-3">3000 sq-ft., {rentHouse.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p>
+                     {/* <p className="mt-3">3000 sq-ft., {rentHouse.bedroom} Bedroom, Semi-furnished, Luxurious, South facing Apartment for Rent in Rangs Malancha, Melbourne.</p> */}
 
                       <div className="mt-4">
                           <h4>Price Details</h4>
@@ -82,7 +94,7 @@ const HomeDetails = () => {
                            <p className="mt-3">Address & Area : Rangs Malancha, House-68, Road-6A (Dead End Road), Dhanmondi Residential Area.
                             Flat Size : 3000 Sq Feet.
                             Floor :  A5 (5th Floor) (6 storied Building ) (South Facing Unit)
-                            Room Category : {rentHouse.bedroom} Large Bed Rooms with {rentHouse.bedroom} Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet.
+                            {/* Room Category : {rentHouse.bedroom} Large Bed Rooms with {rentHouse.bedroom} Verandas, Spacious Drawing, Dining & Family Living Room, Highly Decorated Kitchen with Store Room and Servant room with attached Toilet. */}
                             Facilities : 1 Modern Lift, All Modern Amenities & Semi Furnished.
                             Additional Facilities : a. Electricity with full generator load, b. Central Gas Geyser, c. 2 Car Parking with 1 Driver’s Accommodation, d. Community Conference Hall, e. Roof Top Beautified Garden and Grassy Ground, f. Cloth Hanging facility with CC camera
                            </p>
