@@ -27,9 +27,6 @@ const Login = () => {
         if (event.target.name === 'email'){
             isFormValid = /\S+@\S+\.\S+/.test(event.target.value);          
         }
-        if(event.target.name === 'password'){
-            isFormValid= event.target.value.length>5;
-        }
         if(isFormValid){
             const newUserInfo = {...user};
             newUserInfo[event.target.name]= event.target.value;
@@ -64,6 +61,8 @@ const Login = () => {
               });
         }
         e.preventDefault();
+        history.replace(from);
+
     }
 
     const googleProvider = new firebase.auth.GoogleAuthProvider();
