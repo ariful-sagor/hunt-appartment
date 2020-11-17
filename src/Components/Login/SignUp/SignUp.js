@@ -23,28 +23,39 @@ const SignUp = () => {
         name: '',
         email: '',
         password: '',
+        confirmPassword:'',
     });
 
     let isFormValid = true;
 
     const handleBlur=(event) => {
-        if (event.target.name === 'email'){
-            isFormValid = /\S+@\S+\.\S+/.test(event.target.value);
-                    
+
+        if (event.target.name === 'email'){ 
+            let isFormValid= /\S+@\S+\.\S+/.test(event.target.value);
+                              
         }
-        if(event.target.name === 'password'){
-            isFormValid= event.target.value.length>5;
-        }
+
         if(isFormValid){
             const newUserInfo = {...user};
-            newUserInfo[event.target.name]= event.target.value;
+            newUserInfo[event.target.name]= event.target.value;            
             setUser(newUserInfo);
         }
-
     }
-    // const [newUser, setNewUser]= useState(false);
+    const updateUserName= name=>{
+        const user = firebase.auth().currentUser;
+
+        user.updateProfile({
+            displayName: name,
+        }).then(function() {
+        }).catch(function(error) {
+        });
+    }
 
     const handleSubmit=(e)=>{
+        if(user.confirmPassword !== user.password){
+            alert("Password don't match")
+        }
+
         if(user.email && user.password){
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
             .then(res=>{
@@ -63,17 +74,10 @@ const SignUp = () => {
 
         }
         e.preventDefault();
+        history.replace(from);
     }
 
-    const updateUserName= name=>{
-        const user = firebase.auth().currentUser;
-
-        user.updateProfile({
-        displayName: name,
-        }).then(function() {
-        }).catch(function(error) {
-        });
-    }
+    
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const handleGoogleLogin = () => {
         firebase.auth().signInWithPopup(googleProvider)
@@ -129,11 +133,11 @@ const SignUp = () => {
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         
-                        <Form.Control type="text" name='lastName' required onBlur={handleBlur} placeholder="Last Email" />
+                        <Form.Control type="text" name='lastName' required onBlur={handleBlur} placeholder="Last name" />
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         
-                        <Form.Control type="email" onBlur={handleBlur} required name="email" placeholder="Username or Email" />
+                        <Form.Control type="email" onBlur={handleBlur} required name="email" placeholder="Username or Email" />                        
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
                         
